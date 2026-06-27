@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Roadmap — CareerGPT</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Roadmap — CareerGPT</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --void:#03060c; --bg:#070b14; --panel:#0b1220; --panel-2:#101a2c;
+  --line:#1b2740; --line-soft:#141d30;
+  --blue:#2563eb; --blue-soft:#3b82f6; --cyan:#38bdf8; --cyan-glow:rgba(56,189,248,.35);
+  --done:#34d399; --done-soft:rgba(52,211,153,.14); --amber:#f59e0b;
+  --text:#e8edf7; --text-dim:#8a97b3; --text-faint:#54607c;
+  --radius:16px;
+  --font-d:'Sora',sans-serif; --font-b:'Inter',sans-serif; --font-m:'JetBrains Mono',monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  background:
+    radial-gradient(ellipse 900px 500px at 50% -10%, rgba(37,99,235,.22), transparent 60%),
+    radial-gradient(ellipse 700px 400px at 90% 20%, rgba(56,189,248,.08), transparent 60%),
+    var(--void);
+  color:var(--text); font-family:var(--font-b); line-height:1.55; min-height:100vh;
+}
+img,svg{display:block;}
+.wrap{max-width:1180px;margin:0 auto;padding:0 28px;}
+h1,h2,h3{font-family:var(--font-d);}
+.mono{font-family:var(--font-m);}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:50;background:rgba(4,7,13,.86);backdrop-filter:blur(10px);border-bottom:1px solid var(--line-soft);}
+.nav-inner{max-width:1180px;margin:0 auto;padding:16px 28px;display:flex;align-items:center;justify-content:space-between;gap:18px;}
+.nav-left{display:flex;align-items:center;gap:14px;}
+.logo{display:flex;align-items:center;gap:8px;font-family:var(--font-d);font-weight:700;font-size:18px;color:var(--cyan);text-decoration:none;}
+.crumb{font-size:13px;color:var(--text-faint);font-family:var(--font-m);display:none;}
+.crumb b{color:var(--text-dim);font-weight:600;}
+.nav-links{display:flex;gap:26px;list-style:none;}
+.nav-links a{color:var(--text-dim);text-decoration:none;font-size:14px;font-weight:500;transition:color .2s;}
+.nav-links a:hover{color:var(--cyan);}
+.nav-right{display:flex;align-items:center;gap:10px;}
+.home-link,.change-link{font-size:13px;color:var(--text-dim);text-decoration:none;border:1px solid var(--line);padding:8px 14px;border-radius:20px;transition:.2s;white-space:nowrap;background:none;cursor:pointer;font-family:var(--font-b);}
+.home-link:hover,.change-link:hover{border-color:var(--cyan);color:var(--cyan);}
+.menu-toggle{display:none;background:none;border:1px solid var(--line);color:var(--text);font-size:18px;border-radius:8px;width:38px;height:38px;cursor:pointer;}
+.mobile-menu{display:none;flex-direction:column;gap:2px;padding:10px 28px 16px;border-bottom:1px solid var(--line-soft);}
+.mobile-menu a{color:var(--text-dim);text-decoration:none;padding:10px 4px;font-size:14px;border-bottom:1px solid var(--line-soft);}
+@media(max-width:860px){.nav-links{display:none;}.menu-toggle{display:block;}.crumb{display:none !important;}}
+
+/* SECTION */
+section{padding:84px 0;border-bottom:1px solid var(--line-soft);}
+.eyebrow{font-family:var(--font-m);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--cyan);font-weight:600;margin-bottom:10px;display:flex;align-items:center;gap:8px;}
+.eyebrow::before{content:"";width:18px;height:1px;background:var(--cyan);display:inline-block;}
+.section-head{max-width:640px;margin-bottom:48px;}
+.section-head h2{font-size:32px;font-weight:700;margin-bottom:12px;}
+.section-head p{color:var(--text-dim);font-size:15.5px;}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease;}
+.reveal.in-view{opacity:1;transform:translateY(0);}
+
+/* HERO */
+.hero{padding-top:64px;padding-bottom:70px;border-bottom:1px solid var(--line-soft);}
+.hero-grid{display:grid;grid-template-columns:1.25fr .85fr;gap:54px;align-items:center;}
+.hero h1{font-size:46px;font-weight:800;line-height:1.08;margin-bottom:16px;}
+.hero h1 #careerIcon{font-size:38px;margin-right:8px;}
+.hero-tagline{color:var(--text-dim);font-size:16.5px;max-width:520px;margin-bottom:30px;}
+.chip-row{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:32px;}
+.chip{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:10px 14px;font-size:13px;color:var(--text-dim);display:flex;align-items:center;gap:8px;}
+.chip b{color:var(--text);font-family:var(--font-m);font-weight:600;font-size:13.5px;}
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap;}
+.btn{font-family:var(--font-b);font-weight:600;font-size:14.5px;border-radius:10px;padding:13px 22px;cursor:pointer;border:none;transition:transform .15s,box-shadow .2s,background .2s;}
+.btn-primary{background:linear-gradient(120deg,var(--blue),var(--cyan));color:#04101c;}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 28px -10px var(--cyan-glow);}
+.btn-ghost{background:transparent;border:1px solid var(--line);color:var(--text);}
+.btn-ghost:hover{border-color:var(--cyan);color:var(--cyan);transform:translateY(-2px);}
+
+.gauge-wrap{display:flex;flex-direction:column;align-items:center;gap:14px;}
+.gauge-card{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:30px;display:flex;flex-direction:column;align-items:center;gap:6px;width:100%;max-width:280px;box-shadow:0 0 60px -25px rgba(37,99,235,.35) inset;}
+.gauge-card .label{font-family:var(--font-m);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-faint);}
+.gauge-svg{width:200px;height:200px;}
+.gauge-track{fill:none;stroke:var(--line);stroke-width:12;}
+.gauge-fill{fill:none;stroke:url(#gaugeGrad);stroke-width:12;stroke-linecap:round;transform:rotate(-90deg);transform-origin:50% 50%;transition:stroke-dashoffset 1.1s cubic-bezier(.3,.8,.3,1);}
+.gauge-number{font-family:var(--font-d);font-size:42px;font-weight:800;}
+.gauge-sub{font-size:12.5px;color:var(--text-dim);}
+@media(max-width:900px){.hero-grid{grid-template-columns:1fr;}.hero h1{font-size:34px;}}
+
+/* SKILLS */
+.skills-list{display:flex;flex-direction:column;gap:22px;}
+.skill-row{display:grid;grid-template-columns:200px 1fr 70px;gap:18px;align-items:center;}
+.skill-name{font-size:14.5px;font-weight:600;}
+.skill-track{position:relative;height:10px;background:var(--panel-2);border-radius:6px;overflow:visible;border:1px solid var(--line);}
+.skill-fill{position:absolute;left:0;top:0;bottom:0;width:0;border-radius:6px;background:linear-gradient(90deg,var(--blue),var(--cyan));transition:width 1.1s cubic-bezier(.3,.8,.3,1);}
+.skill-target{position:absolute;top:-4px;bottom:-4px;width:2px;background:var(--text-dim);}
+.skill-target::after{content:attr(data-req);position:absolute;top:-20px;left:50%;transform:translateX(-50%);font-family:var(--font-m);font-size:10.5px;color:var(--text-faint);white-space:nowrap;}
+.skill-pct{font-family:var(--font-m);font-size:13.5px;color:var(--cyan);text-align:right;}
+@media(max-width:700px){.skill-row{grid-template-columns:1fr;gap:8px;}.skill-pct{text-align:left;}}
+
+/* TIMELINE */
+.timeline{position:relative;}
+.timeline::before{content:"";position:absolute;left:27px;top:8px;bottom:8px;width:2px;background:linear-gradient(180deg,var(--cyan),var(--blue) 40%,var(--line) 90%);opacity:.55;}
+.stage{position:relative;padding-left:74px;margin-bottom:26px;}
+.stage-node{position:absolute;left:0;top:2px;width:56px;height:56px;border-radius:50%;background:var(--panel);border:2px solid var(--line);display:flex;align-items:center;justify-content:center;font-family:var(--font-d);font-weight:800;font-size:18px;color:var(--text-faint);z-index:2;transition:.3s;}
+.stage.unlocked .stage-node{border-color:var(--cyan);color:var(--cyan);box-shadow:0 0 0 5px rgba(56,189,248,.08);}
+.stage.complete .stage-node{border-color:var(--done);color:var(--done);background:var(--done-soft);}
+.stage-card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:22px 24px;transition:.25s;}
+.stage.locked .stage-card{opacity:.5;}
+.stage-card-top{display:flex;justify-content:space-between;align-items:center;gap:14px;cursor:pointer;flex-wrap:wrap;}
+.stage-card-top h3{font-size:18px;font-weight:700;display:flex;align-items:center;gap:10px;}
+.duration-chip{font-family:var(--font-m);font-size:11.5px;color:var(--text-dim);border:1px solid var(--line);padding:4px 10px;border-radius:20px;white-space:nowrap;}
+.stage-progress-wrap{display:flex;align-items:center;gap:10px;margin-top:14px;}
+.stage-progress-track{flex:1;height:6px;background:var(--panel-2);border-radius:4px;overflow:hidden;}
+.stage-progress-fill{height:100%;background:linear-gradient(90deg,var(--blue),var(--cyan));transition:width .5s ease;}
+.stage-progress-text{font-family:var(--font-m);font-size:11.5px;color:var(--text-dim);white-space:nowrap;}
+.milestones{margin-top:18px;display:none;flex-direction:column;gap:10px;}
+.stage.expanded .milestones{display:flex;}
+.milestone{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:var(--text-dim);cursor:pointer;}
+.milestone input{margin-top:3px;accent-color:var(--cyan);width:15px;height:15px;cursor:pointer;}
+.milestone.checked{color:var(--text);text-decoration:line-through;text-decoration-color:var(--done);}
+.lock-note{font-size:12.5px;color:var(--text-faint);margin-top:14px;display:flex;align-items:center;gap:6px;}
+
+/* PROJECTS */
+.projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.project-card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:24px;display:flex;flex-direction:column;gap:12px;transition:.25s;}
+.project-card:hover{border-color:var(--blue-soft);transform:translateY(-4px);}
+.diff-badge{align-self:flex-start;font-family:var(--font-m);font-size:11px;letter-spacing:.05em;padding:4px 10px;border-radius:20px;text-transform:uppercase;font-weight:600;}
+.diff-Beginner{background:var(--done-soft);color:var(--done);}
+.diff-Intermediate{background:rgba(56,189,248,.14);color:var(--cyan);}
+.diff-Advanced{background:rgba(245,158,11,.14);color:var(--amber);}
+.project-card h3{font-size:17px;font-weight:700;}
+.project-card p{font-size:13.8px;color:var(--text-dim);}
+.tech-tags{display:flex;flex-wrap:wrap;gap:6px;}
+.tech-tag{font-family:var(--font-m);font-size:11px;color:var(--text-dim);border:1px solid var(--line);padding:3px 9px;border-radius:6px;}
+.brief-toggle{background:none;border:none;color:var(--cyan);font-size:13px;font-weight:600;cursor:pointer;text-align:left;padding:0;margin-top:2px;}
+.objectives{display:none;flex-direction:column;gap:6px;padding-left:18px;font-size:13px;color:var(--text-dim);}
+.project-card.open .objectives{display:flex;}
+.objectives li{list-style:disc;}
+@media(max-width:900px){.projects-grid{grid-template-columns:1fr;}}
+
+/* INTERVIEW */
+.tab-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:26px;}
+.tab-btn{background:var(--panel);border:1px solid var(--line);color:var(--text-dim);font-size:13px;font-weight:600;padding:8px 16px;border-radius:20px;cursor:pointer;transition:.2s;}
+.tab-btn.active{background:linear-gradient(120deg,var(--blue),var(--cyan));color:#04101c;border-color:transparent;}
+.interview-card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:38px;min-height:200px;display:flex;flex-direction:column;gap:18px;}
+.iv-tag{font-family:var(--font-m);font-size:11.5px;color:var(--cyan);text-transform:uppercase;letter-spacing:.08em;}
+.iv-q{font-size:20px;font-weight:600;line-height:1.4;}
+.iv-tip{font-size:13.8px;color:var(--text-dim);background:var(--panel-2);border:1px solid var(--line-soft);border-radius:10px;padding:14px 16px;display:none;}
+.iv-tip.show{display:block;}
+.iv-controls{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-top:auto;flex-wrap:wrap;}
+.iv-nav{display:flex;gap:10px;}
+.iv-progress{font-family:var(--font-m);font-size:12.5px;color:var(--text-faint);}
+.btn-small{font-size:13px;padding:9px 16px;}
+
+/* RESUME */
+.resume-grid{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:start;}
+.dropzone{border:2px dashed var(--line);border-radius:var(--radius);padding:46px 24px;text-align:center;cursor:pointer;transition:.2s;background:var(--panel);}
+.dropzone:hover,.dropzone.drag{border-color:var(--cyan);background:var(--panel-2);}
+.dropzone .dz-icon{font-size:34px;margin-bottom:12px;}
+.dropzone p{color:var(--text-dim);font-size:13.8px;}
+.dropzone .dz-file{font-family:var(--font-m);font-size:13px;color:var(--cyan);margin-top:10px;}
+.progress-outer{height:8px;background:var(--panel-2);border-radius:6px;overflow:hidden;margin-top:18px;display:none;}
+.progress-outer.show{display:block;}
+.progress-inner{height:100%;width:0;background:linear-gradient(90deg,var(--blue),var(--cyan));transition:width .2s linear;}
+.resume-result{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:26px;display:none;flex-direction:column;gap:14px;}
+.resume-result.show{display:flex;}
+.resume-score-row{display:flex;align-items:baseline;gap:10px;}
+.resume-score{font-family:var(--font-d);font-size:36px;font-weight:800;color:var(--cyan);}
+.resume-tips{display:flex;flex-direction:column;gap:8px;padding-left:18px;font-size:13.8px;color:var(--text-dim);}
+.resume-tips li{list-style:disc;}
+.resume-note{font-size:12px;color:var(--text-faint);}
+@media(max-width:800px){.resume-grid{grid-template-columns:1fr;}}
+
+/* FOOTER CTA */
+.footer-cta{text-align:center;padding:80px 0;border-bottom:none;}
+.footer-cta h2{font-size:30px;margin-bottom:14px;}
+.footer-cta p{color:var(--text-dim);margin-bottom:28px;}
+footer{padding:34px 0;text-align:center;color:var(--text-faint);font-size:13px;}
+footer a{color:var(--text-dim);text-decoration:none;}
+
+/* ============ DOMAIN MODAL ============ */
+.modal-overlay{
+  position:fixed;inset:0;z-index:200;background:rgba(3,6,12,.82);
+  backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;
+  padding:24px;opacity:0;transition:opacity .25s ease;
+}
+.modal-overlay.show{display:flex;opacity:1;}
+.modal-card{
+  background:linear-gradient(180deg,var(--panel-2),var(--panel));
+  border:1px solid var(--line);border-radius:20px;
+  max-width:1100px;width:100%;max-height:90vh;overflow-y:auto;
+  padding:36px;box-shadow:0 30px 80px -20px rgba(0,0,0,.6),0 0 0 1px rgba(56,189,248,.06);
+  transform:translateY(20px) scale(.97);transition:transform .3s cubic-bezier(.3,.8,.3,1);
+}
+.modal-overlay.show .modal-card{transform:translateY(0) scale(1);}
+.modal-head{text-align:center;margin-bottom:28px;}
+.modal-head .eyebrow{justify-content:center;}
+.modal-head h2{font-size:28px;font-weight:700;margin-bottom:10px;}
+.modal-head p{color:var(--text-dim);font-size:14.5px;max-width:520px;margin:0 auto;}
+.domain-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px;}
+.domain-card{
+  background:var(--panel);border:1px solid var(--line);border-radius:14px;
+  padding:22px;cursor:pointer;transition:.2s;display:flex;flex-direction:column;gap:8px;
+  text-align:left;font-family:var(--font-b);color:var(--text);
+}
+.domain-card:hover{border-color:var(--cyan);transform:translateY(-3px);box-shadow:0 12px 30px -10px rgba(0,0,0,.4);}
+.domain-card.selected{border-color:var(--cyan);background:rgba(56,189,248,.04);box-shadow:0 0 0 1px var(--cyan);}
+.domain-icon{font-size:28px;}
+.domain-name{font-weight:700;font-size:16px;}
+.domain-time{font-family:var(--font-m);font-size:11px;color:var(--cyan);text-transform:uppercase;}
+.domain-desc{font-size:13px;color:var(--text-dim);line-height:1.4;}
+
+.modal-foot{margin-top:34px;display:flex;justify-content:center;gap:14px;}
+#modalCloseBtn{display:none;}
+</style>
+</head>
+<body>
+
+<div class="modal-overlay" id="domainModal">
+  <div class="modal-card">
+    <div class="modal-head">
+      <div class="eyebrow">Career Selection</div>
+      <h2>Choose Your Path</h2>
+      <p>Select the domain you want to master. We'll build a personalized roadmap, skill tracker, and interview prep kit for you.</p>
+    </div>
+    <div class="domain-grid" id="domainGrid">
+      <!-- Generated by JS -->
+    </div>
+    <div class="modal-foot">
+      <button class="btn btn-ghost" id="modalCloseBtn">Cancel</button>
+      <button class="btn btn-primary" id="domainContinueBtn" disabled style="opacity:.5;cursor:not-allowed;">Start My Journey</button>
+    </div>
+  </div>
+</div>
+
+<nav>
+  <div class="nav-inner">
+    <div class="nav-left">
+      <a href="#" class="logo">CareerGPT</a>
+      <div class="crumb" id="crumb">Roadmaps / <b id="crumbCareer">...</b></div>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#overview">Overview</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#roadmap">Roadmap</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#interview">Interview</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="change-link" id="changeCareerBtn">Change Domain</button>
+      <button class="menu-toggle" id="menuToggle">☰</button>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#overview">Overview</a>
+    <a href="#skills">Skills</a>
+    <a href="#roadmap">Roadmap</a>
+    <a href="#projects">Projects</a>
+    <a href="#interview">Interview</a>
+  </div>
+</nav>
+
+<div class="wrap">
+  <section class="hero reveal" id="overview">
+    <div class="hero-grid">
+      <div class="hero-content">
+        <div class="eyebrow">Personalized Roadmap</div>
+        <h1><span id="careerIcon">🚀</span> <span id="heroTitle">...</span></h1>
+        <p class="hero-tagline" id="heroTagline">...</p>
+        <div class="chip-row">
+          <div class="chip">⏱ <b id="chipTime">...</b></div>
+          <div class="chip">🎯 <b><span id="chipMastered">0</span> Mastered</b></div>
+          <div class="chip">📚 <b><span id="chipToLearn">0</span> To Learn</b></div>
+        </div>
+        <div class="hero-ctas">
+          <button class="btn btn-primary" onclick="document.getElementById('roadmap').scrollIntoView({behavior:'smooth'})">Start Learning</button>
+          <button class="btn btn-ghost" id="downloadBtn">Download Roadmap</button>
+        </div>
+      </div>
+      <div class="gauge-wrap">
+        <div class="gauge-card">
+          <div class="label">Job Readiness</div>
+          <svg class="gauge-svg" viewBox="0 0 200 200">
+            <defs>
+              <linearGradient id="gaugeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="var(--blue)" />
+                <stop offset="100%" stop-color="var(--cyan)" />
+              </linearGradient>
+            </defs>
+            <circle class="gauge-track" cx="100" cy="100" r="80" />
+            <circle class="gauge-fill" id="gaugeFill" cx="100" cy="100" r="80" stroke-dasharray="502.65" stroke-dashoffset="502.65" />
+          </svg>
+          <div class="gauge-number" id="gaugeNumber">0</div>
+          <div class="gauge-sub">Percent Ready</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills" class="reveal">
+    <div class="section-head">
+      <div class="eyebrow">Skill Matrix</div>
+      <h2>Core Competencies</h2>
+      <p>Your current proficiency vs. industry standards for this role.</p>
+    </div>
+    <div class="skills-list" id="skillsList">
+    
+    </div>
+  </section>
+
+  <section id="roadmap" class="reveal">
+    <div class="section-head">
+      <div class="eyebrow">The Journey</div>
+      <h2>Step-by-Step Roadmap</h2>
+      <p>Complete milestones to unlock new stages and increase your job readiness score.</p>
+    </div>
+    <div class="timeline" id="timelineList">
+  
+    </div>
+  </section>
+
+  <section id="projects" class="reveal">
+    <div class="section-head">
+      <div class="eyebrow">Portfolio</div>
+      <h2>Hands-on Projects</h2>
+      <p>Build these to prove your skills and populate your GitHub or portfolio.</p>
+    </div>
+    <div class="projects-grid" id="projectsList">
+      
+    </div>
+  </section>
+
+  <section id="interview" class="reveal">
+    <div class="section-head">
+      <div class="eyebrow">Preparation</div>
+      <h2>Interview Simulator</h2>
+      <p>Common questions and expert tips to help you ace the hiring process.</p>
+    </div>
+    <div class="tab-row" id="interviewTabs">
+      <!-- Generated by JS -->
+    </div>
+    <div class="interview-card">
+      <div class="iv-tag" id="ivTag">...</div>
+      <div class="iv-q" id="ivQ">...</div>
+      <div class="iv-tip" id="ivTip">...</div>
+      <div class="iv-controls">
+        <div class="iv-nav">
+          <button class="btn btn-ghost btn-small" id="ivPrev">← Prev</button>
+          <button class="btn btn-ghost btn-small" id="ivNext">Next →</button>
+        </div>
+        <div class="iv-progress" id="ivProgress">0 / 0</div>
+        <button class="btn btn-primary btn-small" id="ivTipBtn">Show Tip</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="resume" class="reveal">
+    <div class="section-head">
+      <div class="eyebrow">Analysis</div>
+      <h2>Resume Scanner</h2>
+      <p>Upload your resume to see how well it matches the <b id="resumeCareer">...</b> role.</p>
+    </div>
+    <div class="resume-grid">
+      <div class="dropzone" id="dropzone">
+        <input type="file" id="fileInput" hidden accept=".pdf,.doc,.docx">
+        <div class="dz-icon">📄</div>
+        <p>Click or drag your resume here</p>
+        <div class="dz-file" id="dzFile">No file selected</div>
+        <div class="progress-outer" id="progressOuter"><div class="progress-inner" id="progressInner"></div></div>
+      </div>
+      <div class="resume-result" id="resumeResult">
+        <div class="resume-score-row">
+          <div class="resume-score" id="resumeScore">0%</div>
+          <div class="label">Match Score</div>
+        </div>
+        <ul class="resume-tips" id="resumeTips"></ul>
+        <p class="resume-note">Based on keyword density and skill alignment for this specific roadmap.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="footer-cta reveal">
+    <h2>Ready to get hired?</h2>
+    <p>Consistency is the only shortcut. Follow the roadmap, build the projects, and you'll get there.</p>
+    <button class="btn btn-primary" onclick="window.scrollTo({top:0,behavior:'smooth'})">Back to Top</button>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p>&copy; 2024 CareerGPT. All roadmaps are AI-generated based on industry trends. <a href="#">Privacy</a> &bull; <a href="#">Terms</a></p>
+  </div>
+</footer>
+
+<script>
+/* =====================  DATA  ===================== */
+const careerData = {
+  "Frontend Developer": {
+    icon: "💻", tagline: "Build beautiful, responsive, and high-performance web interfaces.",
+    readinessBase: 45, readinessMax: 95, estTime: "3–4 months",
+    skills: [{ name: "HTML5 & CSS3", current: 80, required: 95 }, { name: "JavaScript (ES6+)", current: 60, required: 90 }, { name: "React.js / Next.js", current: 40, required: 85 }, { name: "Tailwind CSS", current: 50, required: 80 }],
+    stages: [{ title: "Fundamentals", duration: "2 weeks", milestones: ["Semantic HTML", "Flexbox/Grid", "Responsive Design"] }, { title: "Modern JS", duration: "4 weeks", milestones: ["Async/Await", "DOM API", "ES6 Syntax"] }],
+    projects: [{ title: "SaaS Dashboard", difficulty: "Intermediate", desc: "Complex UI with charts.", tech: ["React", "Tailwind"], objectives: ["Dark mode", "Filtering"] }],
+    interview: [{ category: "Technical", q: "What is the Virtual DOM?", tip: "Talk about diffing and performance." }]
+  },
+  "Backend Developer": {
+    icon: "⚙️", tagline: "Architect scalable APIs, databases, and server-side logic.",
+    readinessBase: 40, readinessMax: 92, estTime: "4–6 months",
+    skills: [{ name: "Node.js", current: 50, required: 90 }, { name: "SQL/NoSQL", current: 45, required: 85 }, { name: "System Design", current: 25, required: 75 }],
+    stages: [{ title: "Server Basics", duration: "3 weeks", milestones: ["HTTP/REST", "Node.js Core"] }, { title: "Databases", duration: "4 weeks", milestones: ["Prisma/Mongoose", "Indexing"] }],
+    projects: [{ title: "Chat API", difficulty: "Intermediate", desc: "Socket-based messaging.", tech: ["Socket.io", "Redis"], objectives: ["Real-time", "Auth"] }],
+    interview: [{ category: "Technical", q: "What is SQL Injection?", tip: "Mention parameterized queries." }]
+  },
+  "Fullstack Developer": {
+    icon: "🚀", tagline: "Master both ends of the stack to build complete digital products.",
+    readinessBase: 35, readinessMax: 90, estTime: "6–8 months",
+    skills: [{ name: "React", current: 50, required: 85 }, { name: "Node.js", current: 40, required: 85 }, { name: "Deployment", current: 20, required: 70 }],
+    stages: [{ title: "Frontend", duration: "8 weeks", milestones: ["UI dev", "API consumption"] }, { title: "Backend", duration: "8 weeks", milestones: ["API arch", "Auth"] }],
+    projects: [{ title: "SaaS Starter", difficulty: "Advanced", desc: "Full boilerplate.", tech: ["Next.js", "Stripe"], objectives: ["Subscriptions", "Admin"] }],
+    interview: [{ category: "Technical", q: "CSR vs SSR?", tip: "Compare SEO and performance." }]
+  },
+  "Data Scientist": {
+    icon: "📊", tagline: "Turn raw data into actionable insights using ML and statistics.",
+    readinessBase: 30, readinessMax: 90, estTime: "5–7 months",
+    skills: [{ name: "Python", current: 60, required: 95 }, { name: "Statistics", current: 40, required: 85 }, { name: "Machine Learning", current: 20, required: 80 }],
+    stages: [{ title: "Foundations", duration: "4 weeks", milestones: ["Pandas/NumPy", "SQL"] }, { title: "Modeling", duration: "6 weeks", milestones: ["Linear Regression", "Hypothesis Testing"] }],
+    projects: [{ title: "Churn Prediction", difficulty: "Intermediate", desc: "Predict customer exit.", tech: ["Scikit-learn"], objectives: ["Feature engineering", "Visualization"] }],
+    interview: [{ category: "Technical", q: "What is Overfitting?", tip: "Mention cross-validation." }]
+  },
+  "Product Manager": {
+    icon: "🧭", tagline: "Bridge strategy and execution — own a product roadmap end to end.",
+    readinessBase: 50, readinessMax: 95, estTime: "3–5 months",
+    skills: [{ name: "User Research", current: 60, required: 85 }, { name: "Roadmapping", current: 55, required: 85 }, { name: "Metrics", current: 30, required: 75 }],
+    stages: [{ title: "Foundation", duration: "3 weeks", milestones: ["PM frameworks", "PRDs"] }, { title: "Execution", duration: "6 weeks", milestones: ["User interviews", "Sprint planning"] }],
+    projects: [{ title: "Feature Launch", difficulty: "Intermediate", desc: "Discovery to launch plan.", tech: ["Figma", "Notion"], objectives: ["PRD", "Prototype"] }],
+    interview: [{ category: "Case", q: "Improve a daily product.", tip: "Pick friction, quantify fix." }]
+  },
+  "UI/UX Designer": {
+    icon: "🎨", tagline: "Design with empathy and rigor — from fundamentals to interfaces.",
+    readinessBase: 46, readinessMax: 95, estTime: "4–5 months",
+    skills: [{ name: "Figma", current: 70, required: 90 }, { name: "User Research", current: 45, required: 80 }, { name: "Visual Design", current: 75, required: 85 }],
+    stages: [{ title: "Foundation", duration: "3 weeks", milestones: ["Typography", "Color theory"] }, { title: "UX Process", duration: "6 weeks", milestones: ["Personas", "Wireframes"] }],
+    projects: [{ title: "Banking Redesign", difficulty: "Intermediate", desc: "Research-driven redesign.", tech: ["Figma"], objectives: ["Audit", "Interviews"] }],
+    interview: [{ category: "Case", q: "Walk through your process.", tip: "Problem to Outcome." }]
+  },
+  "DevOps Engineer": {
+    icon: "♾️", tagline: "Automate infrastructure and streamline delivery pipelines.",
+    readinessBase: 35, readinessMax: 90, estTime: "5–6 months",
+    skills: [{ name: "Linux", current: 60, required: 95 }, { name: "Docker/K8s", current: 30, required: 85 }, { name: "CI/CD", current: 40, required: 90 }],
+    stages: [{ title: "Linux Mastery", duration: "4 weeks", milestones: ["Shell scripting", "Networking"] }, { title: "Containers", duration: "6 weeks", milestones: ["Dockerizing", "K8s basics"] }],
+    projects: [{ title: "CI/CD Pipeline", difficulty: "Advanced", desc: "Automated blue-green deploy.", tech: ["GitHub Actions"], objectives: ["Automation", "Rollback"] }],
+    interview: [{ category: "Technical", q: "Container vs VM?", tip: "Isolation and overhead." }]
+  },
+  "Mobile Developer": {
+    icon: "📱", tagline: "Create seamless mobile experiences for iOS and Android.",
+    readinessBase: 40, readinessMax: 92, estTime: "4–6 months",
+    skills: [{ name: "React Native", current: 50, required: 90 }, { name: "Native APIs", current: 30, required: 80 }, { name: "App Stores", current: 20, required: 75 }],
+    stages: [{ title: "UI Patterns", duration: "4 weeks", milestones: ["Navigation", "Components"] }, { title: "Data", duration: "5 weeks", milestones: ["Offline sync", "Local storage"] }],
+    projects: [{ title: "Fitness App", difficulty: "Intermediate", desc: "Activity tracking.", tech: ["Flutter/RN"], objectives: ["Tracking", "Charts"] }],
+    interview: [{ category: "Technical", q: "Handle offline state?", tip: "Caching and optimistic UI." }]
+  },
+  "Cybersecurity Analyst": {
+    icon: "🛡️", tagline: "Protect systems and networks from digital threats.",
+    readinessBase: 30, readinessMax: 88, estTime: "6–8 months",
+    skills: [{ name: "Network Sec", current: 40, required: 90 }, { name: "Ethical Hacking", current: 20, required: 85 }, { name: "Risk", current: 35, required: 80 }],
+    stages: [{ title: "Core Sec", duration: "5 weeks", milestones: ["Protocols", "Cryptography"] }, { title: "Defense", duration: "7 weeks", milestones: ["Pen-testing", "Firewalls"] }],
+    projects: [{ title: "Vulnerability Lab", difficulty: "Advanced", desc: "Secure a network.", tech: ["Kali Linux"], objectives: ["Exploits", "Patching"] }],
+    interview: [{ category: "Technical", q: "What is CIA Triad?", tip: "Confidentiality, Integrity, Availability." }]
+  },
+  "AI Engineer": {
+    icon: "🤖", tagline: "Build and deploy intelligent systems using LLMs.",
+    readinessBase: 25, readinessMax: 85, estTime: "6–9 months",
+    skills: [{ name: "PyTorch", current: 30, required: 90 }, { name: "LLMs", current: 40, required: 95 }, { name: "Vector DBs", current: 35, required: 85 }],
+    stages: [{ title: "AI Basics", duration: "6 weeks", milestones: ["Neural nets", "NLP"] }, { title: "LLM Era", duration: "5 weeks", milestones: ["Prompting", "RAG"] }],
+    projects: [{ title: "RAG Agent", difficulty: "Advanced", desc: "Chat with docs.", tech: ["LangChain", "Pinecone"], objectives: ["Indexing", "Retrieval"] }],
+    interview: [{ category: "Technical", q: "Fine-tuning vs RAG?", tip: "Persistence vs Dynamic context." }]
+  },
+  "QA Engineer": {
+    icon: "🔍", tagline: "Ensure software quality through automation.",
+    readinessBase: 50, readinessMax: 95, estTime: "3–4 months",
+    skills: [{ name: "Automation", current: 40, required: 90 }, { name: "API Testing", current: 55, required: 85 }, { name: "Manual", current: 70, required: 95 }],
+    stages: [{ title: "QA Fundamentals", duration: "3 weeks", milestones: ["Test planning", "Bugs"] }, { title: "Automation", duration: "6 weeks", milestones: ["Cypress", "Postman"] }],
+    projects: [{ title: "E-comm Suite", difficulty: "Intermediate", desc: "E2E shopping flow.", tech: ["Playwright"], objectives: ["Happy path", "Edge cases"] }],
+    interview: [{ category: "Technical", q: "Test Pyramid?", tip: "Unit > Integration > E2E." }]
+  },
+  "Digital Marketer": {
+    icon: "📈", tagline: "Drive growth through SEO, SEM, and social strategy.",
+    readinessBase: 55, readinessMax: 98, estTime: "3–4 months",
+    skills: [{ name: "SEO/SEM", current: 60, required: 90 }, { name: "Analytics", current: 50, required: 85 }, { name: "Content", current: 70, required: 90 }],
+    stages: [{ title: "Strategy", duration: "3 weeks", milestones: ["Audience research", "KPIs"] }, { title: "Channels", duration: "5 weeks", milestones: ["Paid Ads", "Email flows"] }],
+    projects: [{ title: "Growth Campaign", difficulty: "Intermediate", desc: "Multi-channel launch.", tech: ["Meta Ads", "GA4"], objectives: ["A/B test", "Conversion"] }],
+    interview: [{ category: "Case", q: "CAC is rising, what do you do?", tip: "Check funnel and LTV." }]
+  },
+  "E-commerce Specialist": {
+    icon: "🛍️", tagline: "Optimize online stores for conversion and retention.",
+    readinessBase: 50, readinessMax: 96, estTime: "3–5 months",
+    skills: [{ name: "Shopify/Platforms", current: 65, required: 90 }, { name: "Inventory", current: 40, required: 80 }, { name: "CRO", current: 35, required: 85 }],
+    stages: [{ title: "Store Setup", duration: "4 weeks", milestones: ["Catalog mgmt", "UX audit"] }, { title: "Operations", duration: "5 weeks", milestones: ["Logistics", "Customer service"] }],
+    projects: [{ title: "Store Audit", difficulty: "Beginner", desc: "CRO teardown.", tech: ["Shopify", "Hotjar"], objectives: ["Funnel audit", "Friction points"] }],
+    interview: [{ category: "Business", q: "Improve cart abandonment.", tip: "Check shipping and trust." }]
+  },
+  "Cloud Architect": {
+    icon: "☁️", tagline: "Design resilient and scalable cloud infrastructures.",
+    readinessBase: 30, readinessMax: 90, estTime: "6–12 months",
+    skills: [{ name: "AWS/Azure", current: 40, required: 95 }, { name: "Security", current: 30, required: 90 }, { name: "Cost Opt.", current: 20, required: 85 }],
+    stages: [{ title: "Cloud Core", duration: "8 weeks", milestones: ["Compute/Storage", "VPC"] }, { title: "Advanced Arch", duration: "10 weeks", milestones: ["Serverless", "DR"] }],
+    projects: [{ title: "Global App Arch", difficulty: "Advanced", desc: "Multi-region setup.", tech: ["Terraform", "AWS"], objectives: ["Latency", "High availability"] }],
+    interview: [{ category: "Technical", q: "What is Well-Architected?", tip: "5 pillars of AWS." }]
+  },
+  "Blockchain Developer": {
+    icon: "⛓️", tagline: "Build decentralized apps and smart contracts.",
+    readinessBase: 20, readinessMax: 85, estTime: "6–9 months",
+    skills: [{ name: "Solidity", current: 25, required: 90 }, { name: "Web3.js", current: 30, required: 85 }, { name: "Cryptography", current: 15, required: 80 }],
+    stages: [{ title: "Web3 Basics", duration: "5 weeks", milestones: ["Wallets", "Ethereum"] }, { title: "Smart Contracts", duration: "8 weeks", milestones: ["Solidity", "Hardhat"] }],
+    projects: [{ title: "NFT Marketplace", difficulty: "Advanced", desc: "Mint and trade NFTs.", tech: ["Solidity", "React"], objectives: ["Minting", "Royalties"] }],
+    interview: [{ category: "Technical", q: "What is Gas?", tip: "Computation cost on ETH." }]
+  },
+  "Game Developer": {
+    icon: "🎮", tagline: "Create immersive worlds using Unity or Unreal Engine.",
+    readinessBase: 30, readinessMax: 90, estTime: "6–12 months",
+    skills: [{ name: "C# / C++", current: 40, required: 90 }, { name: "Unity/Unreal", current: 35, required: 95 }, { name: "Game Design", current: 45, required: 80 }],
+    stages: [{ title: "Engine Basics", duration: "6 weeks", milestones: ["Physics", "Scripting"] }, { title: "Advanced Game", duration: "10 weeks", milestones: ["AI", "Optimization"] }],
+    projects: [{ title: "3D Platformer", difficulty: "Intermediate", desc: "Complete level.", tech: ["Unity"], objectives: ["Player controller", "Level design"] }],
+    interview: [{ category: "Technical", q: "Explain Game Loop.", tip: "Input -> Update -> Render." }]
+  },
+  "Data Engineer": {
+    icon: "🏗️", tagline: "Build pipelines that process and move big data.",
+    readinessBase: 35, readinessMax: 92, estTime: "5–7 months",
+    skills: [{ name: "SQL", current: 60, required: 95 }, { name: "Spark/Hadoop", current: 20, required: 85 }, { name: "ETL Tools", current: 40, required: 90 }],
+    stages: [{ title: "Data Arch", duration: "5 weeks", milestones: ["Warehousing", "Modeling"] }, { title: "Big Data", duration: "8 weeks", milestones: ["Streaming", "Distributed compute"] }],
+    projects: [{ title: "ETL Pipeline", difficulty: "Advanced", desc: "Real-time data move.", tech: ["Airflow", "Snowflake"], objectives: ["Automation", "Validation"] }],
+    interview: [{ category: "Technical", q: "What is ELT vs ETL?", tip: "Where transformation happens." }]
+  },
+  "Embedded Systems": {
+    icon: "📟", tagline: "Program the hardware that powers our world.",
+    readinessBase: 25, readinessMax: 88, estTime: "8–14 months",
+    skills: [{ name: "C Programming", current: 50, required: 95 }, { name: "RTOS", current: 15, required: 80 }, { name: "Microcontrollers", current: 30, required: 90 }],
+    stages: [{ title: "Hardware Core", duration: "10 weeks", milestones: ["Circuits", "Assembly"] }, { title: "Firmware", duration: "12 weeks", milestones: ["Drivers", "RTOS"] }],
+    projects: [{ title: "Smart Home Node", difficulty: "Intermediate", desc: "Sensor network.", tech: ["ESP32", "C"], objectives: ["Sensors", "WiFi"] }],
+    interview: [{ category: "Technical", q: "What is an Interrupt?", tip: "Hardware event handling." }]
+  },
+  "Business Analyst": {
+    icon: "💼", tagline: "Translate business needs into technical requirements.",
+    readinessBase: 60, readinessMax: 95, estTime: "3–4 months",
+    skills: [{ name: "SQL/Tableau", current: 45, required: 85 }, { name: "Documentation", current: 70, required: 95 }, { name: "Strategy", current: 55, required: 85 }],
+    stages: [{ title: "Requirements", duration: "4 weeks", milestones: ["User stories", "BPMN"] }, { title: "Analysis", duration: "5 weeks", milestones: ["Data viz", "Gap analysis"] }],
+    projects: [{ title: "Business Case", difficulty: "Intermediate", desc: "New feature ROI.", tech: ["Excel", "Jira"], objectives: ["Cost/Benefit", "Spec"] }],
+    interview: [{ category: "Case", q: "Stakeholder conflict?", tip: "Evidence-based negotiation." }]
+  },
+  "SRE (Site Reliability)": {
+    icon: "🚨", tagline: "Keep global systems running at peak performance.",
+    readinessBase: 35, readinessMax: 92, estTime: "6–9 months",
+    skills: [{ name: "Observability", current: 30, required: 90 }, { name: "Incident Mgmt", current: 40, required: 95 }, { name: "Go/Python", current: 50, required: 85 }],
+    stages: [{ title: "Reliability", duration: "6 weeks", milestones: ["SLOs/SLIs", "Error budgets"] }, { title: "Operations", duration: "8 weeks", milestones: ["On-call", "Post-mortems"] }],
+    projects: [{ title: "Monitoring Stack", difficulty: "Advanced", desc: "Global alerting.", tech: ["Prometheus", "Grafana"], objectives: ["Dashboards", "Alerts"] }],
+    interview: [{ category: "Technical", q: "What is an Error Budget?", tip: "Balance speed and stability." }]
+  },
+  "Machine Learning Eng.": {
+    icon: "🧠", tagline: "Productionize ML models at scale.",
+    readinessBase: 25, readinessMax: 88, estTime: "6–10 months",
+    skills: [{ name: "MLOps", current: 20, required: 90 }, { name: "Deep Learning", current: 25, required: 85 }, { name: "API Design", current: 45, required: 80 }],
+    stages: [{ title: "Modeling", duration: "8 weeks", milestones: ["Neural nets", "CV/NLP"] }, { title: "Production", duration: "8 weeks", milestones: ["Model serving", "Monitoring"] }],
+    projects: [{ title: "Image Search", difficulty: "Advanced", desc: "Visual search engine.", tech: ["PyTorch", "FastAPI"], objectives: ["Embeddings", "Inference"] }],
+    interview: [{ category: "Technical", q: "Vanishing Gradient?", tip: "Training depth issues." }]
+  }
+};
+
+/* =====================  STATE  ===================== */
+const params = new URLSearchParams(window.location.search);
+let careerName = params.get("career") || localStorage.getItem("cgpt_last_career") || null;
+if(careerName && !careerData[careerName]) careerName = null;
+
+let career = null;
+let careerKey = "";
+let expandedStage = 0;
+let ivCategory = "All";
+let ivIndex = 0;
+
+/* =====================  DOMAIN MODAL  ===================== */
+const domainModal = document.getElementById("domainModal");
+const domainGrid = document.getElementById("domainGrid");
+const continueBtn = document.getElementById("domainContinueBtn");
+const closeBtn = document.getElementById("modalCloseBtn");
+let pendingDomain = null;
+
+function buildDomainGrid(){
+  domainGrid.innerHTML = Object.keys(careerData).map(name => {
+    const c = careerData[name];
+    return `
+      <button class="domain-card" data-name="${name}">
+        <div class="domain-icon">${c.icon}</div>
+        <div class="domain-name">${name}</div>
+        <div class="domain-time">⏱ ${c.estTime}</div>
+        <div class="domain-desc">${c.tagline.split(".")[0]}.</div>
+      </button>
+    `;
+  }).join("");
+  domainGrid.querySelectorAll(".domain-card").forEach(card => {
+    card.addEventListener("click", () => {
+      domainGrid.querySelectorAll(".domain-card").forEach(c => c.classList.remove("selected"));
+      card.classList.add("selected");
+      pendingDomain = card.dataset.name;
+      continueBtn.disabled = false;
+      continueBtn.style.opacity = 1;
+      continueBtn.style.cursor = "pointer";
+    });
+    card.addEventListener("dblclick", () => {
+      pendingDomain = card.dataset.name;
+      confirmDomain();
+    });
+  });
+}
+
+function openDomainModal(allowClose=false){
+  buildDomainGrid();
+  pendingDomain = null;
+  continueBtn.disabled = true;
+  continueBtn.style.opacity = .5;
+  continueBtn.style.cursor = "not-allowed";
+  closeBtn.style.display = allowClose ? "block" : "none";
+  if(careerName){
+    const cur = domainGrid.querySelector(`[data-name="${careerName}"]`);
+    if(cur){ cur.classList.add("selected"); pendingDomain = careerName; continueBtn.disabled=false; continueBtn.style.opacity=1; continueBtn.style.cursor="pointer"; }
+  }
+  domainModal.classList.add("show");
+  document.body.style.overflow = "hidden";
+}
+function closeDomainModal(){
+  domainModal.classList.remove("show");
+  document.body.style.overflow = "";
+}
+function confirmDomain(){
+  if(!pendingDomain) return;
+  careerName = pendingDomain;
+  localStorage.setItem("cgpt_last_career", careerName);
+  loadCareer();
+  closeDomainModal();
+  document.getElementById("overview").scrollIntoView({behavior:"smooth"});
+}
+continueBtn.addEventListener("click", confirmDomain);
+closeBtn.addEventListener("click", closeDomainModal);
+domainModal.addEventListener("click", e => { if(e.target === domainModal && closeBtn.style.display !== "none") closeDomainModal(); });
+document.getElementById("changeCareerBtn").addEventListener("click", () => openDomainModal(true));
+
+/* =====================  HELPERS  ===================== */
+function msKey(si,mi){return "cgpt_"+careerKey+"_s"+si+"_m"+mi;}
+function isChecked(si,mi){return localStorage.getItem(msKey(si,mi))==="1";}
+function totalMilestones(){return career.stages.reduce((s,x)=>s+x.milestones.length,0);}
+function completedMilestones(){let n=0;career.stages.forEach((s,si)=>s.milestones.forEach((m,mi)=>{if(isChecked(si,mi))n++;}));return n;}
+function stageComplete(si){return career.stages[si].milestones.every((m,mi)=>isChecked(si,mi));}
+function stageUnlocked(si){return si===0||stageComplete(si-1);}
+function currentReadiness(){const t=totalMilestones();const p=t?completedMilestones()/t:0;return Math.round(career.readinessBase+p*(career.readinessMax-career.readinessBase));}
+
+/* =====================  RENDER  ===================== */
+let gaugeAnimFrame=null;
+function animateGauge(toVal){
+  const c=document.getElementById("gaugeFill"),n=document.getElementById("gaugeNumber");
+  c.style.strokeDashoffset = 502.65*(1-toVal/100);
+  const from=parseInt(n.textContent)||0;
+  if(gaugeAnimFrame)cancelAnimationFrame(gaugeAnimFrame);
+  const start=performance.now();
+  function step(t){const k=Math.min(1,(t-start)/1000),e=1-Math.pow(1-k,3);n.textContent=Math.round(from+(toVal-from)*e);if(k<1)gaugeAnimFrame=requestAnimationFrame(step);}
+  gaugeAnimFrame=requestAnimationFrame(step);
+}
+function renderHero(){
+  document.getElementById("careerIcon").textContent=career.icon;
+  document.getElementById("heroTitle").textContent=careerName;
+  document.getElementById("crumbCareer").textContent=careerName;
+  document.getElementById("heroTagline").textContent=career.tagline;
+  document.getElementById("chipTime").textContent=career.estTime;
+  document.title=careerName+" Roadmap — CareerGPT";
+  document.getElementById("resumeCareer").textContent=careerName;
+  const m=career.skills.filter(s=>s.current>=s.required).length;
+  document.getElementById("chipMastered").textContent=m;
+  document.getElementById("chipToLearn").textContent=career.skills.length-m;
+  animateGauge(currentReadiness());
+  document.getElementById("crumb").style.display = "block";
+}
+function renderSkills(){
+  document.getElementById("skillsList").innerHTML=career.skills.map(s=>`
+    <div class="skill-row">
+      <div class="skill-name">${s.name}</div>
+      <div class="skill-track">
+        <div class="skill-fill" data-target="${s.current}"></div>
+        <div class="skill-target" data-req="Target ${s.required}%" style="left:${s.required}%"></div>
+      </div>
+      <div class="skill-pct">${s.current}%</div>
+    </div>`).join("");
+}
+function renderTimeline(){
+  document.getElementById("timelineList").innerHTML=career.stages.map((stage,si)=>{
+    const u=stageUnlocked(si),c=stageComplete(si);
+    const dc=stage.milestones.filter((m,mi)=>isChecked(si,mi)).length;
+    const pct=Math.round((dc/stage.milestones.length)*100);
+    const sc=c?"complete":(u?"unlocked":"locked");
+    const ec=(si===expandedStage)?"expanded":"";
+    const nc=c?"✓":(u?(si+1):"🔒");
+    return `<div class="stage ${sc} ${ec}" data-stage="${si}">
+      <div class="stage-node">${nc}</div>
+      <div class="stage-card">
+        <div class="stage-card-top" onclick="toggleStage(${si})">
+          <h3>${stage.title}</h3>
+          <div class="duration-chip mono">${stage.duration}</div>
+        </div>
+        <div class="stage-progress-wrap">
+          <div class="stage-progress-track"><div class="stage-progress-fill" style="width:${u?pct:0}%"></div></div>
+          <div class="stage-progress-text">${dc}/${stage.milestones.length} milestones</div>
+        </div>
+        ${u?`<div class="milestones">${stage.milestones.map((m,mi)=>`
+          <label class="milestone ${isChecked(si,mi)?"checked":""}">
+            <input type="checkbox" ${isChecked(si,mi)?"checked":""} onchange="toggleMilestone(${si},${mi})">
+            <span>${m}</span>
+          </label>`).join("")}</div>`
+          :`<div class="lock-note">🔒 Complete "${career.stages[si-1].title}" to unlock this stage.</div>`}
+      </div>
+    </div>`;
+  }).join("");
+}
+function toggleStage(si){expandedStage=(expandedStage===si)?-1:si;renderTimeline();}
+function toggleMilestone(si,mi){const k=msKey(si,mi);if(isChecked(si,mi))localStorage.removeItem(k);else localStorage.setItem(k,"1");renderTimeline();animateGauge(currentReadiness());const m=career.skills.filter(s=>s.current>=s.required).length;document.getElementById("chipMastered").textContent=m;document.getElementById("chipToLearn").textContent=career.skills.length-m;}
+function renderProjects(){
+  document.getElementById("projectsList").innerHTML=career.projects.map((p,i)=>`
+    <div class="project-card" id="proj-${i}">
+      <span class="diff-badge diff-${p.difficulty}">${p.difficulty}</span>
+      <h3>${p.title}</h3>
+      <p>${p.desc}</p>
+      <div class="tech-tags">${p.tech.map(t=>`<span class="tech-tag mono">${t}</span>`).join("")}</div>
+      <button class="brief-toggle" onclick="toggleProject(${i})">View objectives ↓</button>
+      <ul class="objectives">${p.objectives.map(o=>`<li>${o}</li>`).join("")}</ul>
+    </div>`).join("");
+}
+function toggleProject(i){const c=document.getElementById("proj-"+i);c.classList.toggle("open");c.querySelector(".brief-toggle").textContent=c.classList.contains("open")?"Hide objectives ↑":"View objectives ↓";}
+
+function ivFiltered(){return ivCategory==="All"?career.interview:career.interview.filter(q=>q.category===ivCategory);}
+function renderInterviewTabs(){
+  const cats=["All",...new Set(career.interview.map(q=>q.category))];
+  document.getElementById("interviewTabs").innerHTML=cats.map(c=>`<button class="tab-btn ${c===ivCategory?"active":""}" onclick="setIvCategory('${c}')">${c}</button>`).join("");
+}
+function setIvCategory(c){ivCategory=c;ivIndex=0;renderInterviewTabs();renderInterviewCard();}
+function renderInterviewCard(){
+  const l=ivFiltered();if(!l.length)return;
+  const q=l[ivIndex];
+  document.getElementById("ivTag").textContent=q.category;
+  document.getElementById("ivQ").textContent=q.q;
+  const t=document.getElementById("ivTip");t.textContent="💡 "+q.tip;t.classList.remove("show");
+  document.getElementById("ivTipBtn").textContent="Show Tip";
+  document.getElementById("ivProgress").textContent=(ivIndex+1)+" / "+l.length;
+}
+document.getElementById("ivPrev").onclick=()=>{const l=ivFiltered();ivIndex=(ivIndex-1+l.length)%l.length;renderInterviewCard();};
+document.getElementById("ivNext").onclick=()=>{const l=ivFiltered();ivIndex=(ivIndex+1)%l.length;renderInterviewCard();};
+document.getElementById("ivTipBtn").onclick=()=>{const t=document.getElementById("ivTip");t.classList.toggle("show");document.getElementById("ivTipBtn").textContent=t.classList.contains("show")?"Hide Tip":"Show Tip";};
+
+/* RESUME */
+const dropzone=document.getElementById("dropzone"),fileInput=document.getElementById("fileInput");
+dropzone.addEventListener("click",()=>fileInput.click());
+dropzone.addEventListener("dragover",e=>{e.preventDefault();dropzone.classList.add("drag");});
+dropzone.addEventListener("dragleave",()=>dropzone.classList.remove("drag"));
+dropzone.addEventListener("drop",e=>{e.preventDefault();dropzone.classList.remove("drag");if(e.dataTransfer.files.length)handleResumeFile(e.dataTransfer.files[0]);});
+fileInput.addEventListener("change",e=>{if(e.target.files.length)handleResumeFile(e.target.files[0]);});
+function handleResumeFile(f){
+  document.getElementById("dzFile").textContent="📎 "+f.name;
+  const o=document.getElementById("progressOuter"),i=document.getElementById("progressInner");
+  document.getElementById("resumeResult").classList.remove("show");
+  o.classList.add("show");i.style.width="0%";let p=0;
+  const t=setInterval(()=>{p+=Math.random()*18+8;if(p>=100){p=100;clearInterval(t);setTimeout(showResumeResult,250);}i.style.width=p+"%";},180);
+}
+function showResumeResult(){
+  const gaps=[...career.skills].sort((a,b)=>(b.required-b.current)-(a.required-a.current)).slice(0,3);
+  const score=Math.min(96,career.readinessBase+Math.round(Math.random()*18)+10);
+  document.getElementById("resumeScore").textContent=score+"%";
+  document.getElementById("resumeTips").innerHTML=gaps.map(g=>`<li>Add a project or bullet that clearly demonstrates <strong style="color:var(--text)">${g.name}</strong> — currently your biggest gap.</li>`).join("");
+  document.getElementById("resumeResult").classList.add("show");
+}
+
+/* DOWNLOAD */
+document.getElementById("downloadBtn").onclick=()=>{
+  let t=careerName+" — Career Roadmap (CareerGPT)\n";
+  t+="Job Readiness: "+currentReadiness()+"%   Estimated time: "+career.estTime+"\n\n";
+  career.stages.forEach((s,si)=>{t+=s.title+" ("+s.duration+")\n";s.milestones.forEach((m,mi)=>t+="  ["+(isChecked(si,mi)?"x":" ")+"] "+m+"\n");t+="\n";});
+  const b=new Blob([t],{type:"text/plain"}),a=document.createElement("a");
+  a.href=URL.createObjectURL(b);a.download=careerName.replace(/\s+/g,"_")+"_Roadmap.txt";a.click();
+};
+
+/* OBSERVERS */
+function setupObservers(){
+  const ro=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add("in-view");}),{threshold:.12});
+  document.querySelectorAll(".reveal").forEach(el=>ro.observe(el));
+  const bo=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.style.width=e.target.dataset.target+"%";bo.unobserve(e.target);}}),{threshold:.4});
+  document.querySelectorAll(".skill-fill").forEach(el=>bo.observe(el));
+}
+
+/* MOBILE MENU */
+document.getElementById("menuToggle").onclick=()=>{const m=document.getElementById("mobileMenu");m.style.display=(m.style.display==="flex")?"none":"flex";};
+document.querySelectorAll("#mobileMenu a").forEach(a=>a.addEventListener("click",()=>{document.getElementById("mobileMenu").style.display="none";}));
+
+/* LOAD CAREER */
+function loadCareer(){
+  career = careerData[careerName];
+  careerKey = careerName.replace(/[^a-zA-Z]/g,"");
+  expandedStage = 0; ivCategory = "All"; ivIndex = 0;
+  renderHero(); renderSkills(); renderTimeline(); renderProjects();
+  renderInterviewTabs(); renderInterviewCard();
+  document.querySelectorAll(".skill-fill").forEach(el=>{el.style.width="0%";});
+  setupObservers();
+}
+
+if(!careerName){
+  openDomainModal(false);  // forced, no close button
+}else{
+  loadCareer();
+  setupObservers();
+}
+ 
+</script>
+</body>
+</html>
